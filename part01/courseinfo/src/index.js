@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
-const App = () => {
+const App = (props) => {
   const course = {
     name: "Half Stack application development",
     parts: [
@@ -54,11 +54,26 @@ const App = () => {
     );
   };
 
+  //Example of part1c
+  const [counter, setCounter] = useState(0);
+
+  // setTimeout(() => setCounter(counter + 1), 1000);
+  const increase = () => {
+    setCounter(counter + 1);
+  };
+
+  const Display = (props) => {
+    return <div>{props.counter}</div>;
+  };
+
   return (
     <div style={{ padding: 50, border: "1px solid black", borderRadius: 5 }}>
       <Header course={course} />
       <Content course={course} />
       <Total course={course} />
+      <hr />
+      <Display counter={counter} />
+      <button onClick={increase}>Plus</button>
     </div>
   );
 };
